@@ -31,6 +31,10 @@ import edu.eci.cvds.sampleprj.dao.mybatis.mappers.ClienteMapper;
 import edu.eci.cvds.sampleprj.dao.mybatis.mappers.ItemMapper;
 import edu.eci.cvds.samples.entities.Item;
 import edu.eci.cvds.samples.entities.TipoItem;
+import edu.eci.cvds.samples.services.ExcepcionServiciosAlquiler;
+import edu.eci.cvds.samples.services.ServiciosAlquiler;
+import edu.eci.cvds.samples.services.ServiciosAlquilerFactory;
+import edu.eci.cvds.samples.services.impl.ServiciosAlquilerImpl;
 
 import java.util.Date;
 
@@ -64,8 +68,9 @@ public class MyBatisExample {
      * Programa principal de ejempo de uso de MyBATIS
      * @param args
      * @throws SQLException 
+     * @throws ExcepcionServiciosAlquiler 
      */
-    public static void main(String args[]) throws SQLException {
+    public static void main(String args[]) throws SQLException, ExcepcionServiciosAlquiler {
         SqlSessionFactory sessionfact = getSqlSessionFactory();
 
         SqlSession sqlss = sessionfact.openSession();
@@ -75,13 +80,13 @@ public class MyBatisExample {
         ClienteMapper cm=sqlss.getMapper(ClienteMapper.class);
         ItemMapper im=sqlss.getMapper(ItemMapper.class);
         //cm...
-        System.out.println(cm.consultarClientes());
+        //System.out.println(cm.consultarClientes());
         
-        System.out.println(cm.consultarCliente(123456));
+        //System.out.println(cm.consultarCliente(123456));
         
-        System.out.println(im.consultarItems());
+        //System.out.println(im.consultarItems());
         
-        System.out.println(im.consultarItem(15));
+        //System.out.println(im.consultarItem(15));
         
         //SE DEBE REVISAR QUE LOS PARAMETRO FK NO ESTEN REPETIDOS O VILARIA LA CONDICIÓN DE LLAVE PRIMARIA
         /*También se debe tener en cuenta que el id de la tabla VI_ITEMRENTADO no está automatizado, por lo tanto se debe ingresar
@@ -100,7 +105,9 @@ public class MyBatisExample {
         Item it = new Item(tipo, 21, "item21", "descripcion", Date.from(Instant.now()), 500, "formato renta", "genero");
         im.insertarItem(it);
         
-        
+        ServiciosAlquilerFactory fa = ServiciosAlquilerFactory.getInstance();
+        ServiciosAlquiler ser = fa.getServiciosAlquiler();
+        System.out.println(ser.consultarCliente(123456));
         
         
         

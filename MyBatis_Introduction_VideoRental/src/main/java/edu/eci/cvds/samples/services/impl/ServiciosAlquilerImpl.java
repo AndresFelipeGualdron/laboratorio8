@@ -2,7 +2,9 @@ package edu.eci.cvds.samples.services.impl;
 
 
 
+import com.google.inject.Guice;
 import com.google.inject.Inject;
+import com.google.inject.Injector;
 import com.google.inject.Singleton;
 import edu.eci.cvds.sampleprj.dao.ClienteDAO;
 import edu.eci.cvds.sampleprj.dao.ItemDAO;
@@ -14,6 +16,8 @@ import edu.eci.cvds.samples.entities.ItemRentado;
 import edu.eci.cvds.samples.entities.TipoItem;
 import edu.eci.cvds.samples.services.ExcepcionServiciosAlquiler;
 import edu.eci.cvds.samples.services.ServiciosAlquiler;
+import edu.eci.cvds.samples.services.ServiciosAlquilerFactory;
+
 import java.sql.Date;
 import java.util.List;
 
@@ -22,6 +26,8 @@ public class ServiciosAlquilerImpl implements ServiciosAlquiler {
 
    @Inject
    private ItemDAO itemDAO;
+   @Inject
+   private ClienteDAO clenteDAO;
 
    @Override
    public int valorMultaRetrasoxDia(int itemId) {
@@ -30,7 +36,11 @@ public class ServiciosAlquilerImpl implements ServiciosAlquiler {
 
    @Override
    public Cliente consultarCliente(long docu) throws ExcepcionServiciosAlquiler {
-       throw new UnsupportedOperationException("Not supported yet.");
+	   try{
+		   return clenteDAO.load(docu);
+	   } catch(PersistenceException e) {
+		   throw new ExcepcionServiciosAlquiler("Error al consultar el cliente "+docu,e);
+	   }
    }
 
    @Override

@@ -8,4 +8,7 @@ public class ExcepcionServiciosAlquiler extends Exception{
 		
 	}
 
+	public ExcepcionServiciosAlquiler(String string) {
+	}
+
 }
