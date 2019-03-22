@@ -37,4 +37,13 @@ public class MyBATISItemDAO implements ItemDAO{
 
 
   }
+
+	@Override
+	public int consultarTarifaxDia(int itemId) throws PersistenceException{
+		try {
+			return itemMapper.consultarTarifaxDia(itemId);
+		}catch(org.apache.ibatis.exceptions.PersistenceException e) {
+			throw new PersistenceException("Error al consultar la tarifa del item"+itemId,e);
+		}
+	}
 }

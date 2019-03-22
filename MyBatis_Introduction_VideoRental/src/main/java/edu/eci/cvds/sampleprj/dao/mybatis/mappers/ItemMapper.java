@@ -19,6 +19,8 @@ public interface ItemMapper {
     public Item consultarItem(@Param("itemId")int id);
     
     public void insertarItem(@Param("item")Item it);
+    
+    public int consultarTarifaxDia(@Param("id") int itemId);
 
         
 }

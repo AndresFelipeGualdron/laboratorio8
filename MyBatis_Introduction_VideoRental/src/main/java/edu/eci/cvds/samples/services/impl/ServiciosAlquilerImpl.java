@@ -33,8 +33,14 @@ public class ServiciosAlquilerImpl implements ServiciosAlquiler {
    private ItemRentadoDAO itemRentadoDAO;
 
    @Override
-   public int valorMultaRetrasoxDia(int itemId) {
-       throw new UnsupportedOperationException("Not supported yet.");
+   public int valorMultaRetrasoxDia(int itemId) throws ExcepcionServiciosAlquiler{
+       try {
+    	   Item i = itemDAO.load(itemId);
+    	   return i.getId();
+    	   //Item i = itemDAO.consultarTarifaxDia(itemId);
+       }catch(PersistenceException e) {
+    	   throw new ExcepcionServiciosAlquiler("Error al consultar el valor de la multa del item: "+itemId,e);
+       }
    }
 
    @Override

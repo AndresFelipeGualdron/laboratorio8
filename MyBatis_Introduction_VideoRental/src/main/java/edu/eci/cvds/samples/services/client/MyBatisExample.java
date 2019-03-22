@@ -115,6 +115,9 @@ public class MyBatisExample {
          */
         System.out.println(ser.consultarItemsCliente(123456));
         
+        
+        System.out.println(ser.valorMultaRetrasoxDia(1));
+        
         sqlss.commit();
         sqlss.close();
 

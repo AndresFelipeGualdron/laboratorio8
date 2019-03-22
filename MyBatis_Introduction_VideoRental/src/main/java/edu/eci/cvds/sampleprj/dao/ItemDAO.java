@@ -7,5 +7,7 @@ public interface ItemDAO{
    public void save(Item it) throws PersistenceException;
 
    public Item load(int id) throws PersistenceException;
+   
+   public int consultarTarifaxDia(int itemId) throws PersistenceException;
 
 }

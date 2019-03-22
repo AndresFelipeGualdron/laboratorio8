@@ -56,6 +56,13 @@
 		<result property = 'genero' column = 'generoItem'/>
 		<association property = 'tipo' javaType = 'tipoItem' resultMap='edu.eci.cvds.sampleprj.dao.mybatis.mappers.TipoItemMapper.TipoItemResult'></association>
 	</resultMap>
+	
+	<select parameterType="map" id='consultarTarifaxDia' resultType='java.lang'>
+		SELECT 
+		tarifaxdia
+		FROM VI_ITEMS AS i, VI_TIPOITEM AS t
+		WHERE i.TIPOITEM_id = t.id and i.id = #{id};
+	</select>
     
     
 </mapper>
