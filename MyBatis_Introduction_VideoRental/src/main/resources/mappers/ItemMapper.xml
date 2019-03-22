@@ -78,7 +78,7 @@
 		<result property = 'genero' column = 'generoItem'/>
 		<association property = 'tipo' javaType = 'tipoItem' resultMap='edu.eci.cvds.sampleprj.dao.mybatis.mappers.TipoItemMapper.TipoItemResult'></association>
 	</resultMap>
-	
+
 	
     
     

@@ -1,5 +1,7 @@
 package edu.eci.cvds.sampleprj.dao.mybatis;
 
+import java.sql.Date;
+import java.util.Calendar;
 import java.util.List;
 
 import com.google.inject.Inject;
@@ -7,6 +9,7 @@ import com.google.inject.Inject;
 import edu.eci.cvds.sampleprj.dao.ItemRentadoDAO;
 import edu.eci.cvds.sampleprj.dao.PersistenceException;
 import edu.eci.cvds.sampleprj.dao.mybatis.mappers.ClienteMapper;
+import edu.eci.cvds.samples.entities.Item;
 import edu.eci.cvds.samples.entities.ItemRentado;
 
 public class MyBATISItemRentadoDAO implements ItemRentadoDAO{
@@ -16,8 +19,7 @@ public class MyBATISItemRentadoDAO implements ItemRentadoDAO{
 
 	@Override
 	public void save(ItemRentado it) throws PersistenceException {
-		throw new UnsupportedOperationException("No hemos implementado el metodo save de MyBATISItemRentadoDAO");
-		
+		itemRentadoMapper.agregarItemRentadoACliente(it.getId(), it.getItem().getId(), it.getFechainiciorenta(), it.getFechafinrenta());
 	}
 
 	@Override

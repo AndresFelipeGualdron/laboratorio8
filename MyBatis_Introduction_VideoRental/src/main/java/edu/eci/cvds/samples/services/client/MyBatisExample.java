@@ -20,7 +20,10 @@ package edu.eci.cvds.samples.services.client;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 
 import org.apache.ibatis.io.Resources;
@@ -36,8 +39,6 @@ import edu.eci.cvds.samples.services.ExcepcionServiciosAlquiler;
 import edu.eci.cvds.samples.services.ServiciosAlquiler;
 import edu.eci.cvds.samples.services.ServiciosAlquilerFactory;
 import edu.eci.cvds.samples.services.impl.ServiciosAlquilerImpl;
-
-import java.util.Date;
 
 /**
  *
@@ -112,8 +113,8 @@ public class MyBatisExample {
          * Agregando un cliente. Se debe cambiar el id (primaria) para respetar la condiciones de integridad de la base de datos
          */
         
-        //TipoItem tipo = new TipoItem(1,"Videojuego");
-        //Item i = new Item(tipo,900, "NOMBRE", "descripcion", Date.from(Instant.now()), 500, "formato renta", "genero");
+        TipoItem tipo = new TipoItem(1,"Videojuego");
+        Item i = new Item(tipo,900, "NOMBRE", "descripcion", Date.from(Instant.now()), 500, "formato renta", "genero");
         //ser.registrarItem(i);
         
         /*
@@ -124,6 +125,14 @@ public class MyBatisExample {
         
         System.out.println(ser.consultarItemsDisponibles());
         
+        String string = "5818-04-20";
+        String string2 = "5818-04-28";
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        
+        Date date=Date.valueOf(string);
+        Date date2=Date.valueOf(string2);
+        ser.registrarAlquilerCliente(date, 2418907, i, 15);
+        System.out.println(ser.consultarItemsCliente(2418907));
         sqlss.commit();
         sqlss.close();
 
