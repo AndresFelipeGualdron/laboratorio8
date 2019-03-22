@@ -90,6 +90,7 @@
 		ITEMS_id as Item
 		FROM VI_ITEMRENTADO
 		WHERE CLIENTES_documento = #{cliente};
+		
 	</select>
 	
 	<resultMap type = 'ItemRentado' id = 'ItemRentadoResult'>
