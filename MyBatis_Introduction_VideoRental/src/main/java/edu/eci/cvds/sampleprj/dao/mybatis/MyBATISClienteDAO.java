@@ -1,5 +1,7 @@
 package edu.eci.cvds.sampleprj.dao.mybatis;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -31,6 +33,10 @@ public class MyBATISClienteDAO implements ClienteDAO{
 	public long consultarCostoAlquiler(int iditem, int numdias) throws PersistenceException {
 		cm.consultarCostoAlquiler(iditem, numdias);
 		return 0;
+	}
+	
+	public List<Cliente> load() throws PersistenceException {
+		return cm.consultarClientes();
 	}
 
 }

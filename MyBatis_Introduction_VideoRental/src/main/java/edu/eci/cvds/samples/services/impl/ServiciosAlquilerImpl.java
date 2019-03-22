@@ -66,7 +66,11 @@ public class ServiciosAlquilerImpl implements ServiciosAlquiler {
 
    @Override
    public List<Cliente> consultarClientes() throws ExcepcionServiciosAlquiler {
-       throw new UnsupportedOperationException("Not supported yet.");
+       try {
+    	   return clenteDAO.load();
+       }catch(PersistenceException e) {
+    	   throw new ExcepcionServiciosAlquiler("No se pudo consultar los clientes",e);
+       }
    }
 
    @Override
@@ -79,8 +83,12 @@ public class ServiciosAlquilerImpl implements ServiciosAlquiler {
    }
 
    @Override
-   public List<Item> consultarItemsDisponibles() {
-       throw new UnsupportedOperationException("Not supported yet.");
+   public List<Item> consultarItemsDisponibles() throws ExcepcionServiciosAlquiler{
+       try {
+    	   return itemDAO.ItemsDisponibles();
+       }catch(PersistenceException e) {
+    	   throw new ExcepcionServiciosAlquiler("Error al consultar items disponibles",e);
+       }
    }
 
    @Override
@@ -101,7 +109,9 @@ public class ServiciosAlquilerImpl implements ServiciosAlquiler {
    public List<TipoItem> consultarTiposItem() throws ExcepcionServiciosAlquiler {
        throw new UnsupportedOperationException("Not supported yet.");
    }
-
+   
+   
+   //GUALDRON HASTA ACÁ
    @Override
    public void registrarAlquilerCliente(Date date, long docu, Item item, int numdias) throws ExcepcionServiciosAlquiler {
        try {

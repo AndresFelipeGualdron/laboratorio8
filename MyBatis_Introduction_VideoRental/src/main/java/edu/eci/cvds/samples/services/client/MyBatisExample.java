@@ -123,7 +123,7 @@ public class MyBatisExample {
         System.out.println(ser.consultarItemsCliente(123456));
         
         
-        System.out.println(ser.valorMultaRetrasoxDia(1));
+        //System.out.println(ser.consultarItemsDisponibles());
         
         String string = "5818-04-20";
         String string2 = "5818-04-28";
