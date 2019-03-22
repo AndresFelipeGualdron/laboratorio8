@@ -122,7 +122,7 @@ public class MyBatisExample {
         System.out.println(ser.consultarItemsCliente(123456));
         
         
-        //System.out.println(ser.consultarItemsDisponibles());
+        System.out.println(ser.consultarItemsDisponibles());
         
         sqlss.commit();
         sqlss.close();

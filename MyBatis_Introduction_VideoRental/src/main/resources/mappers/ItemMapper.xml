@@ -56,15 +56,16 @@
 			i.formatorenta as formatorentaItem,
 			i.genero as generoItem,
 			t.id as idTipoItem,
-			t.descripcion as descripcionTipoItem
+			t.descripcion as descripcionTipoItem,
+			inn.fechafinrenta
 		FROM 
 			VI_ITEMRENTADO AS inn, 
 			VI_ITEMS AS i, 
-			VI_TIPOITEM t
+			VI_TIPOITEM AS t
 		WHERE 
 			i.TIPOITEM_id = t.id AND 
 			inn.ITEMS_id = i.id AND 
-			
+			inn.fechafinrenta > (NOW());
 	</select>
 
 	<resultMap type = 'Item' id = 'ItemResult'>
