@@ -22,6 +22,9 @@ public interface ClienteMapper {
      * @param fechainicio
      * @param fechafin 
      */
+    
+    public void registrarCliente(@Param("cl") Cliente cliente);
+    
     public void agregarItemRentadoACliente(@Param("idir") int idir,
     		@Param("idcli") int id, 
     		@Param("idit") int idit, 

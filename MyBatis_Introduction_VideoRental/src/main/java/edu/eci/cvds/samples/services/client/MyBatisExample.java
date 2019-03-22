@@ -29,6 +29,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import edu.eci.cvds.sampleprj.dao.mybatis.mappers.ClienteMapper;
 import edu.eci.cvds.sampleprj.dao.mybatis.mappers.ItemMapper;
+import edu.eci.cvds.samples.entities.Cliente;
 import edu.eci.cvds.samples.entities.Item;
 import edu.eci.cvds.samples.entities.TipoItem;
 import edu.eci.cvds.samples.services.ExcepcionServiciosAlquiler;
@@ -72,21 +73,7 @@ public class MyBatisExample {
      */
     public static void main(String args[]) throws SQLException, ExcepcionServiciosAlquiler {
         SqlSessionFactory sessionfact = getSqlSessionFactory();
-
         SqlSession sqlss = sessionfact.openSession();
-
-        
-        //Crear el mapper y usarlo: 
-        ClienteMapper cm=sqlss.getMapper(ClienteMapper.class);
-        ItemMapper im=sqlss.getMapper(ItemMapper.class);
-        //cm...
-        //System.out.println(cm.consultarClientes());
-        
-        //System.out.println(cm.consultarCliente(123456));
-        
-        //System.out.println(im.consultarItems());
-        
-        //System.out.println(im.consultarItem(15));
         
         //SE DEBE REVISAR QUE LOS PARAMETRO FK NO ESTEN REPETIDOS O VILARIA LA CONDICIÓN DE LLAVE PRIMARIA
         /*También se debe tener en cuenta que el id de la tabla VI_ITEMRENTADO no está automatizado, por lo tanto se debe ingresar
@@ -94,26 +81,28 @@ public class MyBatisExample {
         
         
         
-        cm.agregarItemRentadoACliente(2132219, 123456, 5, new Date(), new Date());
+        //cm.agregarItemRentadoACliente(2132219, 123456, 5, new Date(), new Date());
         
         
         /*
          * se debe tener en cuenta las restricciones de primarias y foraneas
          * */
         
-        TipoItem tipo = new TipoItem(1,"Videojuego");
+        /**TipoItem tipo = new TipoItem(1,"Videojuego");
         Item it = new Item(tipo, 21, "item21", "descripcion", Date.from(Instant.now()), 500, "formato renta", "genero");
         im.insertarItem(it);
+        */
         
         ServiciosAlquilerFactory fa = ServiciosAlquilerFactory.getInstance();
         ServiciosAlquiler ser = fa.getServiciosAlquiler();
-        System.out.println(ser.consultarCliente(123456));
         
+        //Cliente cl = new Cliente("Alejandro",2418907,"3156854826","cra 54 16","correo@gmail.com");
+        //ser.registrarCliente(cl);
         
+        System.out.println(ser.consultarCliente(4));
+        System.out.println(ser.consultarItem(3));
         
         sqlss.commit();
-        
-        
         sqlss.close();
 
         

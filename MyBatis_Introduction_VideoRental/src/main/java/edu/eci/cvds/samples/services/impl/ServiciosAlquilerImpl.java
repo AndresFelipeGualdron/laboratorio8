@@ -89,7 +89,11 @@ public class ServiciosAlquilerImpl implements ServiciosAlquiler {
 
    @Override
    public void registrarCliente(Cliente c) throws ExcepcionServiciosAlquiler {
-       throw new UnsupportedOperationException("Not supported yet.");
+       try {
+    	   clenteDAO.save(c);
+       }catch (PersistenceException e) {
+    	   throw new ExcepcionServiciosAlquiler("No se pudo registrar el cliente");
+       }
    }
 
    @Override

@@ -14,23 +14,16 @@ import edu.eci.cvds.samples.services.client.MyBatisExample;
 public class MyBATISClienteDAO implements ClienteDAO{
 	
 	@Inject
-	private ClienteDAO clienteDAO;
+	private ClienteMapper cm;
 
 	@Override
 	public void save(Cliente it) throws PersistenceException {
-		throw new UnsupportedOperationException("No hemos implementado el metodo save de MyBATISClienteDAO");
+		cm.registrarCliente(it);
 		
 	}
 
 	@Override
 	public Cliente load(long id) throws PersistenceException {
-		MyBatisExample ex = new MyBatisExample();
-		SqlSessionFactory sessionfact = ex.getSqlSessionFactory();
-
-        SqlSession sqlss = sessionfact.openSession();
-		ClienteMapper cm=sqlss.getMapper(ClienteMapper.class);
-		System.out.println("KKKKKKKKKKKKKKKKKKKKKKKKKKKK");
-		System.out.println(cm.consultarCliente(id));
 		return cm.consultarCliente(id);
 	}
 
