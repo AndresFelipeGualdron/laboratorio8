@@ -1,5 +1,7 @@
 package edu.eci.cvds.sampleprj.dao.mybatis;
 
+import java.util.List;
+
 import com.google.inject.Inject;
 
 import edu.eci.cvds.sampleprj.dao.ItemRentadoDAO;
@@ -19,8 +21,9 @@ public class MyBATISItemRentadoDAO implements ItemRentadoDAO{
 	}
 
 	@Override
-	public ItemRentado load(int id) throws PersistenceException {
-		throw new UnsupportedOperationException("No hemos implementado el metodo load de MyBATISItemRentadoDAO");
+	public List<ItemRentado> load(long id) throws PersistenceException {
+		return this.itemRentadoMapper.consultarItemRentadoCliente(id);
+		//throw new UnsupportedOperationException("No hemos implementado el metodo load de MyBATISItemRentadoDAO");
 		//return null;
 	}
 

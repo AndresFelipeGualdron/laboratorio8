@@ -22,7 +22,7 @@ public class MyBATISItemDAO implements ItemDAO{
   }
   catch(org.apache.ibatis.exceptions.PersistenceException e){
       throw new PersistenceException("Error al registrar el item "+it.toString(),e);
-  }        
+  }
 
   }
 
