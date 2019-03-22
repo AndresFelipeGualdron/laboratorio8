@@ -6,9 +6,13 @@
 <mapper namespace="edu.eci.cvds.sampleprj.dao.mybatis.mappers.TipoItemMapper">
 
     <resultMap type = 'TipoItem' id = 'TipoItemResult'>
-		<id property = 'id' column = 'idTipoItem'/>
-		<result property = 'descripcion' column = 'descripcionTipoItem'/>
+		<id property = 'id' column = 'id'/>
+		<result property = 'descripcion' column = 'descripcion'/>
 	</resultMap>
 
+	<select parameterType = "int" id = "consultarTipoItem" resultMap = "TipoItemResult">
+		SELECT * FROM VI_TIPOITEM
+		WHERE id = #{idti};
+	</select>
                 
 </mapper>
