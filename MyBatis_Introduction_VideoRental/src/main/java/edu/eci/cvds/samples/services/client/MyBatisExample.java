@@ -102,6 +102,19 @@ public class MyBatisExample {
         System.out.println(ser.consultarCliente(4));
         System.out.println(ser.consultarItem(3));
         
+        /*
+         * Agregando un cliente. Se debe cambiar el id (primaria) para respetar la condiciones de integridad de la base de datos
+         */
+        
+        //TipoItem tipo = new TipoItem(1,"Videojuego");
+        //Item i = new Item(tipo,900, "NOMBRE", "descripcion", Date.from(Instant.now()), 500, "formato renta", "genero");
+        //ser.registrarItem(i);
+        
+        /*
+         * CONSULTANDO TODOS LOS ITEMS RENTADOS DEL CLIENTE 123465
+         */
+        System.out.println(ser.consultarItemsCliente(123456));
+        
         sqlss.commit();
         sqlss.close();
 

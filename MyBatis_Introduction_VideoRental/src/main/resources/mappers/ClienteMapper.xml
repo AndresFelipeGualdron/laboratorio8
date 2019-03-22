@@ -78,11 +78,29 @@
 		<collection property = 'rentados' ofType = 'ItemRentado' resultMap = 'edu.eci.cvds.sampleprj.dao.mybatis.mappers.ItemMapper.ItemResult'></collection>
 	</resultMap>
 	
+	
+	
+	
+	
+	<select parameterType = "map" id="consultarItemRentadoCliente" resultMap="ItemRentadoResult">
+		SELECT 
+		id,
+		fechaInicioRenta as firItemRentado,
+		fechaFinRenta as ffrItemRentado,
+		ITEMS_id as Item
+		FROM VI_ITEMRENTADO
+		WHERE CLIENTES_documento = #{cliente};
+	</select>
+	
 	<resultMap type = 'ItemRentado' id = 'ItemRentadoResult'>
 		<id property = 'id' column = 'idItemRentado'/>
-		<result property = 'fechaInicioRenta' column = 'firItemRentado'/>
-		<result property = 'fechaFinRenta' column = 'ffrItemRentado'/>
+		<result property = 'fechainiciorenta' column = 'firItemRentado'/>
+		<result property = 'fechafinrenta' column = 'ffrItemRentado'/>
 		<association property = 'item' javaType = 'Item' resultMap='edu.eci.cvds.sampleprj.dao.mybatis.mappers.ItemMapper.ItemResult'></association>
 	</resultMap>
+	
+
+	
+	
           	
 </mapper>
