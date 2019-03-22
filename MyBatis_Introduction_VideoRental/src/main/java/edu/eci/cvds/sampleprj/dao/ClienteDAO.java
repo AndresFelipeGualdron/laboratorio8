@@ -6,4 +6,6 @@ public interface ClienteDAO {
 	public void save(Cliente it) throws PersistenceException;
 
 	public Cliente load(long id) throws PersistenceException;
+
+	public long consultarCostoAlquiler(int iditem, int numdias) throws PersistenceException;
 }

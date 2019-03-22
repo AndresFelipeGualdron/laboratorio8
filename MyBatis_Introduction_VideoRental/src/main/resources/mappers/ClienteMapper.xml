@@ -58,10 +58,10 @@
 		    WHERE documento = #{idcli};
 	</select>
 	
-	<insert parameterType="map" id="agregarItemRentadoACliente">
-		INSERT INTO VI_ITEMRENTADO (id,clientes_documento,items_id,fechainiciorenta,fechafinrenta)
-		VALUES (#{idir},#{idcli},#{idit},#{fechainicio},#{fechafin});
-	</insert>
+	<insert id="agregarItemRentadoACliente">            
+            INSERT INTO VI_ITEMRENTADO (CLIENTES_documento,ITEMS_id,fechainiciorenta,fechafinrenta) 
+            VALUES (#{idcli},#{idit},#{fechaini},#{fechafin});
+    </insert>
 	
 	<insert parameterType = "map" id = "registrarCliente">	
 		INSERT INTO VI_CLIENTES (documento,nombre,telefono,direccion,email,vetado)

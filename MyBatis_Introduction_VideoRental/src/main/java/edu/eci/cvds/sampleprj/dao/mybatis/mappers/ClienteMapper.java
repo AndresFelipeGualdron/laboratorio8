@@ -26,10 +26,10 @@ public interface ClienteMapper {
     
     public void registrarCliente(@Param("cl") Cliente cliente);
     
-    public void agregarItemRentadoACliente(@Param("idir") int idir,
-    		@Param("idcli") int id, 
-    		@Param("idit") int idit, 
-    		@Param("fechainicio")Date fechainicio,
+    public void agregarItemRentadoACliente(@Param("idcli")long id, 
+    		
+    		@Param("idit")int idit, 
+    		@Param("fechaini")Date fechainicio,
     		@Param("fechafin")Date fechafin);
 
     /**
@@ -44,5 +44,8 @@ public interface ClienteMapper {
      * @return lista de todos los items rentados del cliente
      */
     public List<ItemRentado> consultarItemRentadoCliente(@Param("cliente") long cliente);
+
+	public void consultarCostoAlquiler(@Param("iditem") int iditem, 
+			@Param("numdias") int numdias);
     
 }

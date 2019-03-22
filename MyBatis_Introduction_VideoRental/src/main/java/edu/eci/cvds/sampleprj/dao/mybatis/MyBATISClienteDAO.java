@@ -27,4 +27,10 @@ public class MyBATISClienteDAO implements ClienteDAO{
 		return cm.consultarCliente(id);
 	}
 
+	@Override
+	public long consultarCostoAlquiler(int iditem, int numdias) throws PersistenceException {
+		cm.consultarCostoAlquiler(iditem, numdias);
+		return 0;
+	}
+
 }

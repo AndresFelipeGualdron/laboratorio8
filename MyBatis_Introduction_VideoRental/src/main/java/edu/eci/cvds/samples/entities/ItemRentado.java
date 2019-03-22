@@ -14,13 +14,13 @@ import java.sql.Date;
  */
 public class ItemRentado implements Serializable {
 
-    private int id;
+    private long id;
 
     private Item item;
     private Date fechainiciorenta;
     private Date fechafinrenta;
 
-    public ItemRentado(int id, Item item, Date fechainiciorenta, Date fechafinrenta) {
+    public ItemRentado(long id, Item item, Date fechainiciorenta, Date fechafinrenta) {
         this.id = id;
         this.item = item;
         this.fechainiciorenta = fechainiciorenta;
@@ -30,7 +30,7 @@ public class ItemRentado implements Serializable {
     public ItemRentado() {
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

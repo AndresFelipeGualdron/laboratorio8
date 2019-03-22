@@ -20,6 +20,7 @@ import edu.eci.cvds.samples.services.ServiciosAlquiler;
 import edu.eci.cvds.samples.services.ServiciosAlquilerFactory;
 
 import java.sql.Date;
+import java.util.Calendar;
 import java.util.List;
 
 @Singleton
@@ -103,7 +104,16 @@ public class ServiciosAlquilerImpl implements ServiciosAlquiler {
 
    @Override
    public void registrarAlquilerCliente(Date date, long docu, Item item, int numdias) throws ExcepcionServiciosAlquiler {
-       throw new UnsupportedOperationException("Not supported yet.");
+       try {
+    	   Calendar calendar = Calendar.getInstance();
+           calendar.setTime(date);
+           calendar.add(Calendar.DAY_OF_YEAR, numdias);
+           Date d= new Date(calendar.getTime().getTime());
+           ItemRentado ir=new ItemRentado(docu,item,date,d);
+    	   itemRentadoDAO.save(ir);
+       }catch (PersistenceException e) {
+    	   throw new ExcepcionServiciosAlquiler("No se pudo registrar el alquiler del item.");
+       }
    }
 
    @Override
@@ -117,7 +127,11 @@ public class ServiciosAlquilerImpl implements ServiciosAlquiler {
 
    @Override
    public long consultarCostoAlquiler(int iditem, int numdias) throws ExcepcionServiciosAlquiler {
-       throw new UnsupportedOperationException("Not supported yet.");
+       try {
+		return clenteDAO.consultarCostoAlquiler(iditem,numdias);
+		} catch (PersistenceException e) {
+			throw new ExcepcionServiciosAlquiler("Error al consultar el costo del alquiler del item "+iditem,e);
+		}
    }
 
    @Override
