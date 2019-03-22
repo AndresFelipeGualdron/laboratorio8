@@ -9,6 +9,7 @@ import edu.eci.cvds.samples.entities.Item;
 import edu.eci.cvds.samples.entities.TipoItem;
 import edu.eci.cvds.sampleprj.dao.mybatis.mappers.ClienteMapper;
 import java.sql.SQLException;
+import java.util.List;
 
 public class MyBATISItemDAO implements ItemDAO{
 
@@ -44,6 +45,15 @@ public class MyBATISItemDAO implements ItemDAO{
 			return itemMapper.consultarTarifaxDia(itemId);
 		}catch(org.apache.ibatis.exceptions.PersistenceException e) {
 			throw new PersistenceException("Error al consultar la tarifa del item"+itemId,e);
+		}
+	}
+
+	@Override
+	public List<Item> ItemsDisponibles() throws PersistenceException {
+		try {
+			return itemMapper.consultarItemsDisponibles();
+		}catch(org.apache.ibatis.exceptions.PersistenceException e) {
+			throw new PersistenceException("Error al consultar los items disponibles",e);
 		}
 	}
 }
