@@ -9,7 +9,7 @@ import com.google.inject.Singleton;
 import edu.eci.cvds.sampleprj.dao.ClienteDAO;
 import edu.eci.cvds.sampleprj.dao.ItemDAO;
 import edu.eci.cvds.sampleprj.dao.PersistenceException;
-
+import edu.eci.cvds.sampleprj.dao.TipoItemDAO;
 import edu.eci.cvds.samples.entities.Cliente;
 import edu.eci.cvds.samples.entities.Item;
 import edu.eci.cvds.samples.entities.ItemRentado;
@@ -28,6 +28,8 @@ public class ServiciosAlquilerImpl implements ServiciosAlquiler {
    private ItemDAO itemDAO;
    @Inject
    private ClienteDAO clenteDAO;
+   @Inject
+   private TipoItemDAO tipoItemDAO;
 
    @Override
    public int valorMultaRetrasoxDia(int itemId) {
@@ -74,7 +76,11 @@ public class ServiciosAlquilerImpl implements ServiciosAlquiler {
 
    @Override
    public TipoItem consultarTipoItem(int id) throws ExcepcionServiciosAlquiler {
-       throw new UnsupportedOperationException("Not supported yet.");
+       try {
+    	   return tipoItemDAO.load(id);
+       }catch (PersistenceException e) {
+    	   throw new ExcepcionServiciosAlquiler("Error al consultar el tipo item "+id,e);
+       }
    }
 
    @Override
@@ -105,9 +111,14 @@ public class ServiciosAlquilerImpl implements ServiciosAlquiler {
    public void actualizarTarifaItem(int id, long tarifa) throws ExcepcionServiciosAlquiler {
        throw new UnsupportedOperationException("Not supported yet.");
    }
+   
    @Override
    public void registrarItem(Item i) throws ExcepcionServiciosAlquiler {
-       throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	   try {
+		   itemDAO.save(i);
+	   }catch (PersistenceException e) {
+		   throw new ExcepcionServiciosAlquiler("No se pudo registrar el item");
+	   }
    }
 
    @Override

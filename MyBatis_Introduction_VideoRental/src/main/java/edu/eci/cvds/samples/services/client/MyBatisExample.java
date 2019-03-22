@@ -84,23 +84,29 @@ public class MyBatisExample {
         //cm.agregarItemRentadoACliente(2132219, 123456, 5, new Date(), new Date());
         
         
-        /*
-         * se debe tener en cuenta las restricciones de primarias y foraneas
-         * */
         
-        /**TipoItem tipo = new TipoItem(1,"Videojuego");
-        Item it = new Item(tipo, 21, "item21", "descripcion", Date.from(Instant.now()), 500, "formato renta", "genero");
-        im.insertarItem(it);
-        */
         
         ServiciosAlquilerFactory fa = ServiciosAlquilerFactory.getInstance();
         ServiciosAlquiler ser = fa.getServiciosAlquiler();
         
-        //Cliente cl = new Cliente("Alejandro",2418907,"3156854826","cra 54 16","correo@gmail.com");
-        //ser.registrarCliente(cl);
+        /*
+         * se debe tener en cuenta las restricciones de primarias y foraneas
+         * */
+        
+        /**Cliente cl = new Cliente("Alejandro",2418907,"3156854826","cra 54 16","correo@gmail.com");
+        ser.registrarCliente(cl);*/
+        
+        
+        /*
+         * se debe tener en cuenta las restricciones de primarias y foraneas
+         * */
+        /**TipoItem tipo = new TipoItem(2,"Accion");
+        Item e = new Item(tipo, 1000, "item1000", "descripcion",Date.from(Instant.now()), 600, "formato renta", "genero");
+        ser.registrarItem(e);*/
         
         System.out.println(ser.consultarCliente(4));
         System.out.println(ser.consultarItem(3));
+        System.out.println(ser.consultarTipoItem(1));
         
         sqlss.commit();
         sqlss.close();
