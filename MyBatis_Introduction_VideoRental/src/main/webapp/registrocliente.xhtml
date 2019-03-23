@@ -1,14 +1,30 @@
-<?xml version='1.0' encoding='UTF-8' ?>
+
+<?xhtml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
-
-<h:head>
-	<title>Registro Cliente</title>
-</h:head>
-<h:body>
-</h:body>
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+      
+	<head>
+		<title>banco de ideas</title>
+	</head>
+	<h:body>
+		<div id="registro">
+			<output id="nombre">Nombre:</output><br/>
+			<input id="inNombre"></input><br/>
+			<output id="documento">Documento:</output><br/>
+			<input id="inDocumento"></input><br/>
+			<output id="telefono">Telefono:</output><br/>
+			<input id="inTelefono"></input><br/>
+			<output id="direccion">Direccion:</output><br/>
+			<input id="inDireccion"></input><br/>
+			<output id="email">Email:</output><br/>
+			<input id="inEmail"></input><br/>
+			<input type="button" id="botonRegistrar" value="Registrar"/>
+			<p:commandButton value="dfgdfgdf" id="disabled" style="margin-right:20px;" />
+		</div>
+	</h:body>
 </html>
-
