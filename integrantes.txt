@@ -1,2 +1,5 @@
-ANDRES GUALDRON / Desarrollador 1
-NATALIA PALACIOS / Desarrollador 2
+ANDRES GUALDRON / Desarrollador 2
+NATALIA PALACIOS / Desarrollador 1
+
+GIT: https://github.com/AndresFelipeGualdron/laboratorio8.git
+HEROKU: 
