@@ -23,6 +23,7 @@ public interface ItemMapper {
     public int consultarTarifaxDia(@Param("id") int itemId);
     
     public List<Item> consultarItemsDisponibles();
+    
+    public void actualizarTarifaItem(@Param("id")int id, @Param("tarifa")long tarifa);
 
-        
 }

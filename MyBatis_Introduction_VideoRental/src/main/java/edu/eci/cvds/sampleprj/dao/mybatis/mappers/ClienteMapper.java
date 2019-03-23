@@ -45,7 +45,6 @@ public interface ClienteMapper {
      */
     public List<ItemRentado> consultarItemRentadoCliente(@Param("cliente") long cliente);
 
-	public void consultarCostoAlquiler(@Param("iditem") int iditem, 
-			@Param("numdias") int numdias);
+	public void vetarCliente(@Param("docu")long docu, @Param("estado") boolean estado);
     
 }

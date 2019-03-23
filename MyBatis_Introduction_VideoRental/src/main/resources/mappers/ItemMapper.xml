@@ -78,7 +78,10 @@
 		<association property = 'tipo' javaType = 'tipoItem' resultMap='edu.eci.cvds.sampleprj.dao.mybatis.mappers.TipoItemMapper.TipoItemResult'></association>
 	</resultMap>
 
-	
-    
+    <update parameterType='map' id = "actualizarTarifaItem">
+    	UPDATE VI_ITEMS
+    	SET tarifaxdia = #{tarifa}
+    	WHERE id = #{id};
+    </update>
     
 </mapper>

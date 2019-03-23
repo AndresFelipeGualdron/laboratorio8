@@ -43,4 +43,10 @@ public class MyBATISClienteDAO implements ClienteDAO{
 		return cm.consultarClientes();
 	}
 
+	@Override
+	public void vetarCliente(long docu, boolean estado) throws PersistenceException {
+		cm.vetarCliente(docu,estado);
+		
+	}
+
 }

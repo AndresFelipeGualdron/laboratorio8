@@ -145,7 +145,11 @@ public class ServiciosAlquilerImpl implements ServiciosAlquiler {
 
    @Override
    public void actualizarTarifaItem(int id, long tarifa) throws ExcepcionServiciosAlquiler {
-       throw new UnsupportedOperationException("Not supported yet.");
+       try {
+    	   itemDAO.actualizarTarifaItem(id,tarifa);
+       } catch (PersistenceException e) {
+    	   throw new ExcepcionServiciosAlquiler("No se pudo actualizar la tarifa del item.");
+       }
    }
    
    @Override
@@ -159,6 +163,10 @@ public class ServiciosAlquilerImpl implements ServiciosAlquiler {
 
    @Override
    public void vetarCliente(long docu, boolean estado) throws ExcepcionServiciosAlquiler {
-       throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	   try {
+		   clenteDAO.vetarCliente(docu,estado);
+	   }catch (PersistenceException e) {
+		   throw new ExcepcionServiciosAlquiler("No se pudo vetar al cliente.");
+	   }
    }
 }

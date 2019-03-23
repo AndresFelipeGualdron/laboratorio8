@@ -133,6 +133,9 @@ public class MyBatisExample {
         Date date2=Date.valueOf(string2);
         ser.registrarAlquilerCliente(date, 2418907, i, 15);
         System.out.println(ser.consultarItemsCliente(2418907));
+        System.out.println(ser.consultarCostoAlquiler(1, 5));
+        ser.actualizarTarifaItem(5, 500);
+        ser.vetarCliente(50, true);
         sqlss.commit();
         sqlss.close();
 

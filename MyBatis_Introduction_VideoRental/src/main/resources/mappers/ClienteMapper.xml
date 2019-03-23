@@ -78,10 +78,6 @@
 		<collection property = 'rentados' ofType = 'ItemRentado' resultMap = 'edu.eci.cvds.sampleprj.dao.mybatis.mappers.ItemMapper.ItemResult'></collection>
 	</resultMap>
 	
-	
-	
-	
-	
 	<select parameterType = "map" id="consultarItemRentadoCliente" resultMap="ItemRentadoResult">
 		SELECT 
 		id,
@@ -100,8 +96,10 @@
 		<association property = 'item' javaType = 'Item' resultMap='edu.eci.cvds.sampleprj.dao.mybatis.mappers.ItemMapper.ItemResult'></association>
 	</resultMap>
 	
-
-	
-	
+	<update parameterType='map' id = "vetarCliente">
+    	UPDATE VI_CLIENTES
+    	SET vetado = #{estado}
+    	WHERE documento = #{docu};
+    </update>
           	
 </mapper>

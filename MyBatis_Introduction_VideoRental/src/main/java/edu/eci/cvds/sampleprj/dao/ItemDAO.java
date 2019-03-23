@@ -13,5 +13,7 @@ public interface ItemDAO{
    public int consultarTarifaxDia(int itemId) throws PersistenceException;
    
    public List<Item> ItemsDisponibles() throws PersistenceException;
+   
+   public void actualizarTarifaItem(int id, long tarifa) throws PersistenceException;
 
 }
