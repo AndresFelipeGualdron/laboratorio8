@@ -46,7 +46,7 @@
 			i.TIPOITEM_id = t.id and i.id = #{itemId};
 	</select>
 	
-	<select parameterType='map' id='ItemsDisponibles' resultMap='ItemResult'>
+	<select parameterType='map' id='consultarItemsDisponibles' resultMap='ItemDisponibleResult'>
 		SELECT
 			i.id as idItem,
 			i.nombre as nombreItem,
@@ -56,8 +56,7 @@
 			i.formatorenta as formatorentaItem,
 			i.genero as generoItem,
 			t.id as idTipoItem,
-			t.descripcion as descripcionTipoItem,
-			inn.fechafinrenta
+			t.descripcion as descripcionTipoItem
 		FROM 
 			VI_ITEMRENTADO AS inn, 
 			VI_ITEMS AS i, 
@@ -67,6 +66,17 @@
 			inn.ITEMS_id = i.id AND 
 			inn.fechafinrenta > (NOW());
 	</select>
+	
+	<resultMap type = 'Item' id = 'ItemDisponibleResult'>
+		<id property = 'id' column = 'idItem'/>
+		<result property = 'nombre' column = 'nombreItem'/>
+		<result property = 'descripcion' column = 'descripcionItem'/>
+		<result property = 'fechaLanzamiento' column = 'fechalanItem'/>
+		<result property = 'tarifaxDia' column = 'tarifaxdiaItem'/>
+		<result property = 'formatoRenta' column = 'formatorentaItem'/>
+		<result property = 'genero' column = 'generoItem'/>
+		<association property = 'tipo' javaType = 'tipoItem' resultMap='edu.eci.cvds.sampleprj.dao.mybatis.mappers.TipoItemMapper.TipoItemResult'></association>
+	</resultMap>
 
 	<resultMap type = 'Item' id = 'ItemResult'>
 		<id property = 'id' column = 'idItem'/>
@@ -84,5 +94,17 @@
     	SET tarifaxdia = #{tarifa}
     	WHERE id = #{id};
     </update>
+    <!--  
+    <select parameterType='map' id='consultarMultaAlquiler' resultType='java.lang.long'>
+    	SELECT
+    		(inn.fechafinrenta-#{fechaDevolucion})*i.tarifaxdia
+    	FROM
+    		VI_ITEMRENTADO AS inn, 
+			VI_ITEMS AS i
+		WHERE
+			inn.ITEMS_id = i.id AND
+			inn.fechafinrenta-#{fechaDevolucion} >= 0;
+    </select>
+    -->
     
 </mapper>

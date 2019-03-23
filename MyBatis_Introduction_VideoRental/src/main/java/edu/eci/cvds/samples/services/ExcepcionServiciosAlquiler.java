@@ -5,7 +5,8 @@ import edu.eci.cvds.sampleprj.dao.PersistenceException;
 public class ExcepcionServiciosAlquiler extends Exception{
 	
 	public ExcepcionServiciosAlquiler(String string, PersistenceException ex) {
-		System.out.println(ex.getMessage());
+		ex.printStackTrace();
+		//System.out.println(ex.getStackTrace());
 	}
 
 	public ExcepcionServiciosAlquiler(String string) {

@@ -173,7 +173,7 @@ public class ServiciosAlquilerItemsStub implements ServiciosAlquiler {
    }
 
    @Override
-   public long consultarMultaAlquiler(int iditem,Date fechaDevolucion) throws ExcepcionServiciosAlquiler{
+   public long consultarMultaAlquiler(int iditem, Date fechaDevolucion) throws ExcepcionServiciosAlquiler{
        if (!itemsrentados.containsKey(iditem)){
            throw new ExcepcionServiciosAlquiler("El item "+iditem+"no esta en alquiler");
        }
@@ -238,4 +238,6 @@ public class ServiciosAlquilerItemsStub implements ServiciosAlquiler {
        clientes.put(c3.getDocumento(), c3);
 
    }
+
+
 }
