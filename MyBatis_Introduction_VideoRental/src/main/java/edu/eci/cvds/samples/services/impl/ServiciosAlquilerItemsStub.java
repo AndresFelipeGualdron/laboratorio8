@@ -1,11 +1,5 @@
 package edu.eci.cvds.samples.services.impl;
 
-import edu.eci.cvds.samples.entities.Cliente;
-import edu.eci.cvds.samples.entities.Item;
-import edu.eci.cvds.samples.entities.ItemRentado;
-import edu.eci.cvds.samples.entities.TipoItem;
-import edu.eci.cvds.samples.services.ExcepcionServiciosAlquiler;
-import edu.eci.cvds.samples.services.ServiciosAlquiler;
 import java.io.Serializable;
 import java.sql.Date;
 import java.time.LocalDate;
@@ -16,9 +10,16 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import edu.eci.cvds.samples.entities.Cliente;
+import edu.eci.cvds.samples.entities.Item;
+import edu.eci.cvds.samples.entities.ItemRentado;
+import edu.eci.cvds.samples.entities.TipoItem;
+import edu.eci.cvds.samples.services.ExcepcionServiciosAlquiler;
+import edu.eci.cvds.samples.services.ServiciosAlquiler;
+
 public class ServiciosAlquilerItemsStub implements ServiciosAlquiler {
 
-   private static final int MULTA_DIARIA=5000;
+   private static int MULTA_DIARIA;
    private final static long MILLISECONDS_IN_DAY = 24 * 60 * 60 * 1000;
 
    private final Map<Long,Cliente> clientes;
@@ -39,7 +40,11 @@ public class ServiciosAlquilerItemsStub implements ServiciosAlquiler {
 
    @Override
    public long valorMultaRetrasoxDia(int itemId) {
-       return MULTA_DIARIA;
+	   Item i=null;
+       if(itemsDisponibles.containsKey(itemId)){
+           i=itemsDisponibles.get(itemId);
+       }
+       return i.getTarifaxDia();
    }
 
    @Override
@@ -61,7 +66,7 @@ public class ServiciosAlquilerItemsStub implements ServiciosAlquiler {
        if (!clientes.containsKey(p.getDocumento())) {
            clientes.put(p.getDocumento(), p);
        } else {
-           throw new ExcepcionServiciosAlquiler("El cliente con documento "+p+" ya esta registrado.");
+           throw new ExcepcionServiciosAlquiler("El cliente con documento "+p.getDocumento()+" ya esta registrado.");
        }
    }
 
@@ -71,7 +76,9 @@ public class ServiciosAlquilerItemsStub implements ServiciosAlquiler {
            Cliente c=clientes.get(docu);
            c.setVetado(estado);            
        }
-       else{throw new ExcepcionServiciosAlquiler("Cliente no registrado:"+docu);}
+       else{
+           throw new ExcepcionServiciosAlquiler("Cliente no registrado:"+docu);
+       }
    }
 
    @Override
@@ -132,7 +139,7 @@ public class ServiciosAlquilerItemsStub implements ServiciosAlquiler {
        LocalDate ld=date.toLocalDate();
        LocalDate ld2=ld.plusDays(numdias);
 
-       ItemRentado ir=new ItemRentado(0,item,date,java.sql.Date.valueOf(ld2));
+       ItemRentado ir=new ItemRentado((long)0,item,date,java.sql.Date.valueOf(ld2));
 
        if (clientes.containsKey(docu)) {
            Cliente c = clientes.get(docu);
@@ -219,9 +226,9 @@ public class ServiciosAlquilerItemsStub implements ServiciosAlquiler {
        itemsDisponibles.put(5, i5);
        itemsDisponibles.put(6, i6);
 
-       ItemRentado ir1=new ItemRentado(0,i1, java.sql.Date.valueOf("2017-01-01"), java.sql.Date.valueOf("2017-03-12"));
-       ItemRentado ir2=new ItemRentado(0,i2, java.sql.Date.valueOf("2017-01-04"), java.sql.Date.valueOf("2017-04-7"));
-       ItemRentado ir3=new ItemRentado(0,i1, java.sql.Date.valueOf("2017-01-07"), java.sql.Date.valueOf("2017-07-12"));
+       ItemRentado ir1=new ItemRentado((long)0,i1, java.sql.Date.valueOf("2017-01-01"), java.sql.Date.valueOf("2017-03-12"));
+       ItemRentado ir2=new ItemRentado((long)0,i2, java.sql.Date.valueOf("2017-01-04"), java.sql.Date.valueOf("2017-04-7"));
+       ItemRentado ir3=new ItemRentado((long)0,i1, java.sql.Date.valueOf("2017-01-07"), java.sql.Date.valueOf("2017-07-12"));
 
        ArrayList<ItemRentado> list1 = new ArrayList<>();
        list1.add(ir1);

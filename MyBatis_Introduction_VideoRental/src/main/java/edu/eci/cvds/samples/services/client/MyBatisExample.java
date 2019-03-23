@@ -52,7 +52,7 @@ public class MyBatisExample {
      *
      * @return instancia de SQLSessionFactory
      */
-    public static SqlSessionFactory getSqlSessionFactory() {
+	public static SqlSessionFactory getSqlSessionFactory() {
         SqlSessionFactory sqlSessionFactory = null;
         if (sqlSessionFactory == null) {
             InputStream inputStream;
@@ -123,7 +123,7 @@ public class MyBatisExample {
         System.out.println(ser.consultarItemsCliente(123456));
         
         
-        System.out.println(ser.consultarItemsDisponibles());
+        //System.out.println(ser.consultarItemsDisponibles());
         
         String string = "5818-04-20";
         String string2 = "5818-04-28";

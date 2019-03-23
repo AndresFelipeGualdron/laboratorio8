@@ -6,6 +6,7 @@
 package edu.eci.cvds.samples.entities;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -28,6 +29,19 @@ public class Item implements Serializable{
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.fechaLanzamiento = fechaLanzamiento;
+        this.tarifaxDia = tarifaxDia;
+        this.formatoRenta = formatoRenta;
+        this.genero = genero;
+    }
+    
+    public Item(int id, String nombre,long tarifaxDia,String formatoRenta,TipoItem tipo) {
+    	Date date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+    	this.tipo = tipo;
+    	this.genero = "Indefinido";
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion ="pelicula";
+        this.fechaLanzamiento = date;
         this.tarifaxDia = tarifaxDia;
         this.formatoRenta = formatoRenta;
         this.genero = genero;
