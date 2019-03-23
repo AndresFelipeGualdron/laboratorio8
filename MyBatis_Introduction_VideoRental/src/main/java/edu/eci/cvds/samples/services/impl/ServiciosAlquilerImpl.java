@@ -23,6 +23,8 @@ import java.sql.Date;
 import java.util.Calendar;
 import java.util.List;
 
+import org.mybatis.guice.transactional.Transactional;
+
 @Singleton
 public class ServiciosAlquilerImpl implements ServiciosAlquiler {
 
@@ -121,6 +123,7 @@ public class ServiciosAlquilerImpl implements ServiciosAlquiler {
    
    //GUALDRON HASTA ACÁ
    @Override
+   @Transactional
    public void registrarAlquilerCliente(Date date, long docu, Item item, int numdias) throws ExcepcionServiciosAlquiler {
        try {
     	   Calendar calendar = Calendar.getInstance();
@@ -135,6 +138,7 @@ public class ServiciosAlquilerImpl implements ServiciosAlquiler {
    }
 
    @Override
+   @Transactional
    public void registrarCliente(Cliente c) throws ExcepcionServiciosAlquiler {
        try {
     	   clenteDAO.save(c);
@@ -153,6 +157,7 @@ public class ServiciosAlquilerImpl implements ServiciosAlquiler {
    }
 
    @Override
+   @Transactional
    public void actualizarTarifaItem(int id, long tarifa) throws ExcepcionServiciosAlquiler {
        try {
     	   itemDAO.actualizarTarifaItem(id,tarifa);
@@ -162,6 +167,7 @@ public class ServiciosAlquilerImpl implements ServiciosAlquiler {
    }
    
    @Override
+   @Transactional
    public void registrarItem(Item i) throws ExcepcionServiciosAlquiler {
         try {
         	itemDAO.save(i);
@@ -171,6 +177,7 @@ public class ServiciosAlquilerImpl implements ServiciosAlquiler {
    }
 
    @Override
+   @Transactional
    public void vetarCliente(long docu, boolean estado) throws ExcepcionServiciosAlquiler {
 	   try {
 		   clenteDAO.vetarCliente(docu,estado);

@@ -53,7 +53,7 @@ public class MyBatisExample {
      *
      * @return instancia de SQLSessionFactory
      */
-    public static SqlSessionFactory getSqlSessionFactory() {
+	public static SqlSessionFactory getSqlSessionFactory() {
         SqlSessionFactory sqlSessionFactory = null;
         if (sqlSessionFactory == null) {
             InputStream inputStream;
@@ -124,9 +124,13 @@ public class MyBatisExample {
         //System.out.println(ser.consultarItemsCliente(123456));
         
         
+<<<<<<< HEAD
         //System.out.println(ser.consultarMultaAlquiler(1, java.sql.Date.valueOf(LocalDate.now())));
         
         System.out.println(ser.consultarTiposItem());
+=======
+        //System.out.println(ser.consultarItemsDisponibles());
+>>>>>>> 351d5ccb6dea826034ed7c76eff3a5b1cfda948b
         
         String string = "5818-04-20";
         String string2 = "5818-04-28";
