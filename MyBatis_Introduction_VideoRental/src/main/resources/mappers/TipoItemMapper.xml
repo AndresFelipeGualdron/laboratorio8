@@ -14,5 +14,9 @@
 		SELECT * FROM VI_TIPOITEM
 		WHERE id = #{idti};
 	</select>
+	
+	<select id="consultarTipoItems" resultMap='TipoItemResult'>
+	SELECT * FROM VI_TIPOITEM
+	</select>
                 
 </mapper>

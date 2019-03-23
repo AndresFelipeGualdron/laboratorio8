@@ -88,13 +88,18 @@ public class ServiciosAlquilerImpl implements ServiciosAlquiler {
        try {
     	   return itemDAO.ItemsDisponibles();
        }catch(PersistenceException e) {
+    	   e.printStackTrace();
     	   throw new ExcepcionServiciosAlquiler("Error al consultar items disponibles",e);
        }
    }
 
    @Override
    public long consultarMultaAlquiler(int iditem, Date fechaDevolucion) throws ExcepcionServiciosAlquiler {
-       throw new UnsupportedOperationException("Not supported yet.");
+       try {
+    	   return itemDAO.consultarMultaAlquiler(iditem, fechaDevolucion);
+       }catch(PersistenceException e) {
+    	   throw new ExcepcionServiciosAlquiler("Error al consultar multa del alquiler: "+iditem,e);
+       }
    }
 
    @Override
@@ -108,7 +113,11 @@ public class ServiciosAlquilerImpl implements ServiciosAlquiler {
 
    @Override
    public List<TipoItem> consultarTiposItem() throws ExcepcionServiciosAlquiler {
-       throw new UnsupportedOperationException("Not supported yet.");
+       try {
+		return tipoItemDAO.load();
+	} catch (PersistenceException e) {
+		throw new ExcepcionServiciosAlquiler("Error al consultar los tipos de items",e);
+	}
    }
    
    
@@ -176,4 +185,6 @@ public class ServiciosAlquilerImpl implements ServiciosAlquiler {
 		   throw new ExcepcionServiciosAlquiler("No se pudo vetar al cliente.");
 	   }
    }
+
+	
 }

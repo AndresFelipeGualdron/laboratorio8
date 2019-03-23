@@ -25,6 +25,7 @@ import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
+import java.time.LocalDate;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -120,10 +121,16 @@ public class MyBatisExample {
         /*
          * CONSULTANDO TODOS LOS ITEMS RENTADOS DEL CLIENTE 123465
          */
-        System.out.println(ser.consultarItemsCliente(123456));
+        //System.out.println(ser.consultarItemsCliente(123456));
         
         
+
+        //System.out.println(ser.consultarMultaAlquiler(1, java.sql.Date.valueOf(LocalDate.now())));
+        
+        //System.out.println(ser.consultarTiposItem());
+
         //System.out.println(ser.consultarItemsDisponibles());
+
         
         String string = "5818-04-20";
         String string2 = "5818-04-28";
