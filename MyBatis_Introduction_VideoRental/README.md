@@ -39,17 +39,17 @@ En este laboratorio se utilizará un 'framework' de persistencia. La base de dat
         c.vetado,
         
         ir.id ,
-        ir.fechainiciorenta ,
-        ir.fechafinrenta ,
+        ir.fechainiciorenta,
+        ir.fechafinrenta,
         
-        i.id ,
-        i.nombre ,
-        i.descripcion ,
-        i.fechalanzamiento ,
-        i.tarifaxdia ,
-        i.formatorenta ,
-        i.genero ,        
-        ti.id ,
+        i.id,
+        i.nombre,
+        i.descripcion,
+        i.fechalanzamiento,
+        i.tarifaxdia,
+        i.formatorenta,
+        i.genero,        
+        ti.id,
         ti.descripcion 
 
         
