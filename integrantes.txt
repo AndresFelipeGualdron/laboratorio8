@@ -1,5 +1,8 @@
-ANDRES GUALDRON / Desarrollador 2
-NATALIA PALACIOS / Desarrollador 1
+@startuml component
+actor client
+node app
+database db
 
-GIT: https://github.com/AndresFelipeGualdron/laboratorio8.git
-HEROKU: 
+db -> app
+app -> client
+@enduml
