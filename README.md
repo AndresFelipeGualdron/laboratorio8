@@ -6,4 +6,4 @@
 
 ![cached image](http://www.plantuml.com/plantuml/proxy?src=https://raw.github.com/AndresFelipeGualdron/laboratorio8/master/integrantes.txt)
 
-![uncached image](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.github.com/plantuml/plantuml-server/master/integrantes.txt)
+![uncached image](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.github.com/AndresFelipeGualdron/laboratorio8/master/integrantes.txt)
